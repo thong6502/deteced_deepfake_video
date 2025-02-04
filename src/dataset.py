@@ -1,8 +1,7 @@
 from torch.utils.data import Dataset
 from PIL import Image
 import os
-from torchvision.models import ConvNeXt_Tiny_Weights
-
+from .config import TRANSFORM
 
 class MyDataset(Dataset):
   def __init__(self, dataset_path ,transform = None):
@@ -11,7 +10,7 @@ class MyDataset(Dataset):
     self.labels = []
     self.transform = transform
     if self.transform is None:
-      self.transform = ConvNeXt_Tiny_Weights.DEFAULT.transforms()
+      self.transform = TRANSFORM
       
     for idx, label in enumerate(self.classes):
       for file_name in os.listdir(os.path.join(dataset_path,label)):

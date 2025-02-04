@@ -11,8 +11,8 @@ def download_video(url):
     Trả về đường dẫn file và tên file.
     """
     ydl_opts = {
-        #'format': 'bestvideo[height<=720][ext=mp4]/best[ext=mp4]',  # Ưu tiên video 1080p MP4 với âm thanh
-        'format': 'worst',
+        'format': 'bestvideo[height<=720][ext=mp4]/best[ext=mp4]',  # Ưu tiên video 1080p MP4 với âm thanh
+        # 'format': 'worst',
         #'merge_output_format': None,  # Không dùng FFmpeg
         'outtmpl': f'{DOWNLOAD_DIR}/%(id)s.%(ext)s',  # Đường dẫn lưu file
         'windowsfilenames': True,  # Tự động thay thế ký tự không hợp lệ trên Windows

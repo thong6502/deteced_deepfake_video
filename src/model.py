@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from torchvision.models import convnext_tiny, ConvNeXt_Tiny_Weights
+from .config import MODEL, MODEL_WEIGHTS
 from peft import LoraConfig, get_peft_model
 
 
@@ -19,7 +19,7 @@ class MyConvNeXt(nn.Module):
         super().__init__()
         
         # Tải mô hình ConvNeXt Tiny với weights mặc định
-        self.model = convnext_tiny(weights=ConvNeXt_Tiny_Weights.DEFAULT)
+        self.model = MODEL(weights=MODEL_WEIGHTS)
         
         # Thay đổi lớp classifier cuối cùng để phù hợp với số lớp đầu ra
         self.model.classifier[2] = nn.Linear(self.model.classifier[2].in_features, num_classes)
